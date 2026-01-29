@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grandma’s Kitchen | Homemade Desserts</title>
-  <meta name="description" content="Grandma’s Kitchen – Homemade Vietnamese coconut jelly desserts. Weekly pre-orders available." />
+  <title>Bà Nội Kitchen | Homemade Vietnamese Desserts</title>
+  <meta name="description" content="Bà Nội Kitchen – Homemade Vietnamese coconut jelly desserts. Weekly pre-orders available." />
 
   <style>
     body {
@@ -14,66 +14,78 @@
       color: #333;
     }
 
-    header {
-      background: #f7c6d0;
-      padding: 40px 20px;
+    /* HERO / BRAND BANNER */
+    .hero {
+      background: linear-gradient(180deg, #f6b35e, #f8c77c);
+      padding: 60px 20px 70px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .hero img {
+      max-width: 180px;
+      margin-bottom: 16px;
     }
 
-    header p {
+    .hero h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
       margin-top: 10px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
 
     section {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 36px;
+      font-size: 2rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
 
     .card {
-      border: 1px solid #eee;
-      border-radius: 14px;
+      background: #fff;
+      border-radius: 16px;
       padding: 20px;
       text-align: center;
-      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
     .card img {
       width: 100%;
       border-radius: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
     }
 
     .cta {
-      background: #ffe9ef;
+      background: #ffe6bf;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     .cta a {
       display: inline-block;
-      margin-top: 12px;
-      background: #e85d75;
+      margin-top: 16px;
+      background: #8b4b12;
       color: #fff;
-      padding: 12px 22px;
-      border-radius: 8px;
+      padding: 14px 26px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
     }
@@ -81,7 +93,7 @@
     footer {
       background: #f4f4f4;
       text-align: center;
-      padding: 20px;
+      padding: 22px;
       font-size: 0.9rem;
     }
   </style>
@@ -89,14 +101,14 @@
 
 <body>
 
-<header>
-  <img src="images/logo.png"
-       alt="Grandma’s Kitchen Logo"
-       style="max-width:120px; margin-bottom:12px;">
-  <h1>Grandma’s Kitchen</h1>
+<!-- HERO SECTION -->
+<div class="hero">
+  <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
+  <h1>Bà Nội Kitchen</h1>
   <p>Homemade Vietnamese Desserts • Weekly Pre-Orders</p>
-</header>
+</div>
 
+<!-- BEST SELLERS -->
 <section>
   <h2>Our Best Sellers</h2>
 
@@ -117,6 +129,7 @@
   </div>
 </section>
 
+<!-- ORDERING -->
 <section>
   <h2>How Ordering Works</h2>
   <ol>
@@ -127,16 +140,17 @@
   </ol>
 </section>
 
+<!-- CTA -->
 <section class="cta">
   <h2>Place an Order</h2>
   <p><strong>Pickup area:</strong> Inland Empire (Redlands • Highland • San Bernardino)</p>
   <p><strong>Text orders:</strong> <a href="sms:16282588225">(628) 258-8225</a></p>
   <p>Instagram & Facebook: <strong>@grandmaskitchen</strong></p>
-  <a href="#">Message us on Instagram / Facebook</a>
+  <a href="#">Message Us</a>
 </section>
 
 <footer>
-  <p>© 2026 Grandma’s Kitchen • Home-based cottage food business</p>
+  <p>© 2026 Bà Nội Kitchen • Home-based cottage food business</p>
   <p>Pickup available • Local delivery upon request</p>
 </footer>
 
