@@ -4,32 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bà Nội Kitchen | Homemade Vietnamese Desserts</title>
-  <meta name="description" content="Bà Nội Kitchen – Homemade Vietnamese coconut jelly desserts. Weekly pre-orders available." />
 
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #fff;
+      background: #ffffff;
       color: #333;
+      line-height: 1.6;
     }
 
-    /* HERO / BRAND BANNER */
+    /* HERO */
     .hero {
       background: linear-gradient(180deg, #f6b35e, #f8c77c);
-      padding: 60px 20px 70px;
+      padding: 70px 20px 85px;
       text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: auto;
+      animation: heroFade 0.9s ease-out both;
     }
 
     .hero img {
       max-width: 180px;
       margin-bottom: 16px;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.15));
     }
 
     .hero h1 {
       margin: 0;
       font-size: 2.8rem;
-      letter-spacing: 1px;
     }
 
     .hero p {
@@ -37,18 +43,20 @@
       font-size: 1.15rem;
     }
 
+    /* SECTIONS */
     section {
-      padding: 50px 20px;
+      padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 34px;
       font-size: 2rem;
     }
 
+    /* PRODUCT CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -57,10 +65,16 @@
 
     .card {
       background: #fff;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
     }
 
     .card img {
@@ -69,51 +83,81 @@
       margin-bottom: 14px;
     }
 
-    .card h3 {
-      margin-bottom: 8px;
+    /* INFO BOX */
+    .info-box {
+      background: #fff7ea;
+      border-radius: 18px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
+    /* CTA */
     .cta {
       background: #ffe6bf;
+      padding: 70px 20px;
       text-align: center;
-      padding: 50px 20px;
     }
 
-    .cta a {
+    .btn {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 22px;
       background: #8b4b12;
       color: #fff;
-      padding: 14px 26px;
-      border-radius: 10px;
+      padding: 14px 30px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.18s ease, filter 0.18s ease;
     }
 
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    /* FOOTER */
     footer {
       background: #f4f4f4;
       text-align: center;
-      padding: 22px;
+      padding: 24px;
       font-size: 0.9rem;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <div class="hero">
-  <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
-  <h1>Bà Nội Kitchen</h1>
-  <p>Homemade Vietnamese Desserts • Weekly Pre-Orders</p>
+  <div class="hero-inner">
+    <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
+    <h1>Bà Nội Kitchen</h1>
+    <p>Homemade Vietnamese Desserts • Weekly Pre-Orders</p>
+  </div>
 </div>
 
 <!-- BEST SELLERS -->
-<section>
+<section class="reveal">
   <h2>Our Best Sellers</h2>
-
   <div class="grid">
-
     <div class="card">
       <img src="images/raucau-original.png" alt="Rau Câu Dừa Original">
       <h3>Rau Câu Dừa – Original</h3>
@@ -125,34 +169,73 @@
       <h3>Rau Câu Dừa – Coffee</h3>
       <p>Rich coconut jelly layered with smooth Vietnamese coffee flavor.</p>
     </div>
-
   </div>
 </section>
 
-<!-- ORDERING -->
-<section>
-  <h2>How Ordering Works</h2>
-  <ol>
-    <li>Weekly menu posted on Instagram & Facebook</li>
-    <li>Order via Instagram DM, Facebook DM, or text message</li>
-    <li>Pickup day announced with each menu</li>
-    <li>Local delivery available upon request</li>
-  </ol>
+<!-- INCOMING / SECRET MENU -->
+<section class="reveal">
+  <h2>Incoming Menu & Secret Items 👀</h2>
+  <div class="info-box">
+    <p>
+      We regularly test <strong>new flavors and limited batches</strong>
+      that don’t always appear on the public menu.
+    </p>
+    <p>
+      Message us to ask about:
+      <br>✨ Incoming items
+      <br>✨ Seasonal flavors
+      <br>✨ Secret menu options
+    </p>
+  </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <h2>Place an Order</h2>
+<!-- PARTY / CUSTOM -->
+<section class="reveal">
+  <h2>Have a Party or Special Event?</h2>
+  <div class="info-box">
+    <p>
+      Hosting a birthday, family gathering, or celebration?
+    </p>
+    <p>
+      🎉 Party trays<br>
+      🎉 Custom sizes & flavors<br>
+      🎉 Made-to-order desserts
+    </p>
+    <p>
+      Contact us early so we can plan something special for you.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta reveal">
+  <h2>Message Us</h2>
   <p><strong>Pickup area:</strong> Inland Empire (Redlands • Highland • San Bernardino)</p>
   <p><strong>Text orders:</strong> <a href="sms:16282588225">(628) 258-8225</a></p>
-  <p>Instagram & Facebook: <strong>@grandmaskitchen</strong></p>
-  <a href="#">Message Us</a>
+  <p>Instagram & Facebook: <strong>@grandmakitchenhome</strong></p>
+
+  <a class="btn"
+     href="https://ig.me/m/grandmakitchenhome?text=Hi%20B%C3%A0%20N%E1%BB%99i%20Kitchen!%20%F0%9F%91%8B%0AI%E2%80%99d%20like%20to%20place%20an%20order."
+     target="_blank">
+    Message Us on Instagram
+  </a>
 </section>
 
 <footer>
   <p>© 2026 Bà Nội Kitchen • Home-based cottage food business</p>
   <p>Pickup available • Local delivery upon request</p>
 </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
