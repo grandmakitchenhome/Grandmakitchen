@@ -46,7 +46,6 @@
       opacity: 0.95;
     }
 
-    /* SECTIONS */
     section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -108,18 +107,27 @@
       margin: 0 auto;
     }
 
-    .btn {
-      display: inline-block;
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
       margin-top: 18px;
+    }
+
+    .btn {
       background: #8b4b12;
       color: #fff;
-      padding: 14px 30px;
+      padding: 14px 22px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
       transition: transform 0.18s ease, filter 0.18s ease;
       border: none;
       cursor: pointer;
+      min-width: 230px;
+      display: inline-block;
+      text-align: center;
     }
 
     .btn:hover {
@@ -131,23 +139,15 @@
       background: #ffffff;
       color: #8b4b12;
       border: 2px solid #8b4b12;
-      margin-left: 10px;
-    }
-
-    .note {
-      margin: 14px auto 0;
-      max-width: 620px;
-      display: none;
-      font-weight: bold;
-      background: rgba(255,255,255,0.7);
-      padding: 12px 14px;
-      border-radius: 12px;
     }
 
     .small {
       font-size: 0.95rem;
-      opacity: 0.9;
+      opacity: 0.92;
       margin-top: 10px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* FOOTER */
@@ -214,7 +214,7 @@
         We regularly test <strong>new flavors and limited batches</strong> that don’t always appear on the public menu.
       </p>
       <p class="small">
-        Message us to ask about: ✨ incoming items • ✨ seasonal flavors • ✨ secret menu options
+        DM us to ask about: ✨ incoming items • ✨ seasonal flavors • ✨ secret menu options
       </p>
     </div>
   </section>
@@ -224,9 +224,7 @@
     <h2>Have a Party or Special Event?</h2>
     <div class="info-box">
       <p>Hosting a birthday, family gathering, or celebration?</p>
-      <p class="small">
-        🎉 Party trays • 🎉 Custom sizes & flavors • 🎉 Made-to-order desserts
-      </p>
+      <p class="small">🎉 Party trays • 🎉 Custom sizes & flavors • 🎉 Made-to-order desserts</p>
       <p class="small">Contact us early so we can plan something special for you.</p>
     </div>
   </section>
@@ -239,20 +237,20 @@
       <p><strong>Text orders:</strong> <a href="sms:16282588225">(628) 258-8225</a></p>
       <p><strong>Instagram:</strong> <a href="https://www.instagram.com/grandmakitchenhome/" target="_blank" rel="noopener">@grandmakitchenhome</a></p>
 
-      <!-- Primary: copy message + open DM -->
-      <button class="btn" id="igDmBtn">Message Us on Instagram</button>
-
-      <!-- Backup: opens IG profile -->
-      <a class="btn secondary"
-         href="https://www.instagram.com/grandmakitchenhome/"
-         target="_blank" rel="noopener">
-        Open Instagram Profile
-      </a>
-
-      <div class="note" id="copyNote">✅ Message copied! Paste it in Instagram and hit Send.</div>
-      <div class="small" style="margin-top:10px;">
-        Tip: After Instagram opens, tap the message box → <strong>Paste</strong> → Send.
+      <!-- All buttons open IG DM thread -->
+      <div class="btn-row">
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Place an Order</a>
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Ask for Secret Menu 👀</a>
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Party Tray / Custom Order 🎉</a>
       </div>
+
+      <div class="btn-row" style="margin-top:12px;">
+        <a class="btn secondary" href="https://www.instagram.com/grandmakitchenhome/" target="_blank" rel="noopener">Open Instagram Profile</a>
+      </div>
+
+      <p class="small">
+        Tip: After you DM us, we reply fast using Quick Replies (menu, pricing, pickup time).
+      </p>
     </div>
   </section>
 
@@ -270,48 +268,6 @@
       });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
-
-    // Instagram DM helper (iPhone-friendly): copy text, then open DM thread
-    const igDmBtn = document.getElementById('igDmBtn');
-    const copyNote = document.getElementById('copyNote');
-
-    const dmMessage = "Hi Bà Nội Kitchen! 👋\nI’d like to place an order.";
-    const dmThreadUrl = "https://ig.me/m/grandmakitchenhome";
-
-    async function copyToClipboard(text) {
-      // Try modern clipboard API
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(text);
-        return true;
-      }
-
-      // Fallback for older browsers
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'absolute';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.select();
-      const ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-      return ok;
-    }
-
-    igDmBtn.addEventListener('click', async () => {
-      // Copy first (must be triggered by a user click)
-      try {
-        await copyToClipboard(dmMessage);
-        copyNote.style.display = "block";
-        copyNote.textContent = "✅ Message copied! Paste it in Instagram and hit Send.";
-      } catch (e) {
-        copyNote.style.display = "block";
-        copyNote.textContent = "ℹ️ Opened Instagram. If the message isn’t pasted, type: “Hi Bà Nội Kitchen! I’d like to place an order.”";
-      }
-
-      // Then open DM thread
-      window.open(dmThreadUrl, "_blank");
-    });
   </script>
 
 </body>
