@@ -17,20 +17,38 @@
     /* TOP BAR */
     .topbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
       padding: 10px 16px;
       background: #fff7ea;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .brand-mini {
+      font-weight: bold;
+      opacity: 0.9;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
       font-size: 0.9rem;
     }
 
     .lang-btn {
       cursor: pointer;
       font-weight: bold;
-      margin-left: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.15);
+      background: #fff;
     }
 
     .lang-btn.active {
-      text-decoration: underline;
+      background: #8b4b12;
+      border-color: #8b4b12;
+      color: #fff;
     }
 
     /* HERO */
@@ -58,7 +76,7 @@
 
     h2 {
       text-align: center;
-      margin-bottom: 32px;
+      margin: 0 0 34px;
       font-size: 2rem;
     }
 
@@ -82,7 +100,6 @@
       margin-bottom: 12px;
     }
 
-    /* BADGE */
     .badge {
       display: inline-block;
       font-size: 0.75rem;
@@ -91,14 +108,12 @@
       border-radius: 999px;
       background: #8b4b12;
       color: #fff;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    /* COFFEE DETAILS */
     .details {
       display: none;
       margin-top: 14px;
-      font-size: 0.95rem;
     }
 
     .details.show {
@@ -118,125 +133,116 @@
 
     .cta {
       background: #ffe6bf;
-      padding: 60px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
     footer {
       background: #f4f4f4;
       text-align: center;
-      padding: 22px;
+      padding: 24px;
       font-size: 0.9rem;
     }
 
-    /* LANGUAGE CONTROL */
-    .vi {
-      display: none;
-    }
+    /* LANGUAGE VISIBILITY */
+    [data-lang] { display: none; }
+    body[data-current-lang="en"] [data-lang="en"] { display: block; }
+    body[data-current-lang="vi"] [data-lang="vi"] { display: block; }
   </style>
 </head>
 
-<body>
+<body data-current-lang="en">
 
-<!-- LANGUAGE TOGGLE -->
-<div class="topbar">
-  <span class="lang-btn active" onclick="setLang('en')">EN</span>
-  <span class="lang-btn" onclick="setLang('vi')">VI</span>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
-    <h1 class="en">Bà Nội Kitchen</h1>
-    <h1 class="vi">Bếp Bà Nội</h1>
-    <p class="en">Homemade Vietnamese Desserts • Weekly Limited Batches</p>
-    <p class="vi">Món tráng miệng Việt Nam nhà làm • Mẻ nhỏ mỗi tuần</p>
-  </div>
-</div>
-
-<!-- MENU -->
-<section>
-  <h2 class="en">Menu</h2>
-  <h2 class="vi">Thực Đơn</h2>
-
-  <div class="grid">
-
-    <!-- RAU CAU -->
-    <div class="card">
-      <img src="images/raucau-original.png">
-      <h3 class="en">Coconut Jelly (Rau Câu Dừa)</h3>
-      <h3 class="vi">Rau Câu Dừa</h3>
-      <p class="en">Classic coconut jelly, lightly sweet.</p>
-      <p class="vi">Thạch dừa truyền thống, vị ngọt nhẹ.</p>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="brand-mini">Bà Nội Kitchen</div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnEN" onclick="setLang('en')">English</button>
+      <button class="lang-btn" id="btnVI" onclick="setLang('vi')">Tiếng Việt</button>
     </div>
+  </div>
 
-    <!-- COFFEE -->
-    <div class="card" onclick="toggleCoffee()">
-      <div class="badge en">SECRET MENU</div>
-      <div class="badge vi">MÓN BÍ MẬT</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
 
-      <h3 class="en">Vietnamese Coffee (Đá Viên)</h3>
-      <h3 class="vi">Cà Phê Đá Viên</h3>
+      <h1 data-lang="en">Bà Nội Kitchen</h1>
+      <h1 data-lang="vi">Bếp Bà Nội</h1>
 
-      <p class="en">Ongoing / limited availability.</p>
-      <p class="vi">Có thể thay đổi theo tuần.</p>
+      <p data-lang="en">Homemade Vietnamese Desserts • Weekly Limited Batches</p>
+      <p data-lang="vi">Món tráng miệng Việt Nam nhà làm • Mẻ nhỏ mỗi tuần</p>
+    </div>
+  </div>
 
-      <div class="details" id="coffeeDetails">
-        <img src="images/coffee.png">
+  <!-- MENU -->
+  <section>
+    <h2 data-lang="en">Menu</h2>
+    <h2 data-lang="vi">Thực Đơn</h2>
 
-        <p class="en">
-          Tall iced Vietnamese coffee, to-go style.
-          Available foam options:
-          Egg foam • Ube foam • Classic
-        </p>
+    <div class="grid">
+      <div class="card">
+        <img src="images/raucau-original.png">
+        <h3 data-lang="en">Coconut Jelly – Original</h3>
+        <h3 data-lang="vi">Rau Câu Dừa – Truyền Thống</h3>
+      </div>
 
-        <p class="vi">
-          Cà phê Việt Nam ly cao mang đi.
-          Lớp kem:
-          Kem trứng • Kem khoai môn • Truyền thống
-        </p>
+      <div class="card" onclick="toggleCoffee()">
+        <div class="badge" data-lang="en">SECRET MENU</div>
+        <div class="badge" data-lang="vi">MÓN BÍ MẬT</div>
 
-        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
-          <span class="en">Ask About Coffee</span>
-          <span class="vi">Nhắn Tin Hỏi</span>
-        </a>
+        <h3 data-lang="en">🧊 Đá Viên Coffee (To-Go)</h3>
+        <h3 data-lang="vi">🧊 Cà Phê Đá Viên (Mang Đi)</h3>
+
+        <div class="details" id="coffeeDetails">
+          <img src="images/coffee.png">
+
+          <p data-lang="en">
+            Tall iced Vietnamese coffee in to-go cups.
+            Options: Egg foam • Ube foam • Classic
+          </p>
+
+          <p data-lang="vi">
+            Cà phê Việt Nam ly cao mang đi.
+            Kem trứng • Kem khoai môn • Truyền thống
+          </p>
+
+          <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
+            <span data-lang="en">DM to Ask About Coffee</span>
+            <span data-lang="vi">Nhắn Tin Hỏi Cà Phê</span>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- CTA -->
+  <section class="cta">
+    <h2 data-lang="en">Message Us</h2>
+    <h2 data-lang="vi">Nhắn Tin Đặt</h2>
 
-<!-- CTA -->
-<section class="cta">
-  <h2 class="en">Message Us</h2>
-  <h2 class="vi">Nhắn Tin Đặt Hàng</h2>
+    <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
+      DM on Instagram
+    </a>
+  </section>
 
-  <p class="en">Pickup: Inland Empire</p>
-  <p class="vi">Nhận hàng: Inland Empire</p>
+  <footer>
+    <p>© 2026 Bà Nội Kitchen</p>
+  </footer>
 
-  <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
-    DM on Instagram
-  </a>
-</section>
+  <script>
+    function toggleCoffee() {
+      document.getElementById("coffeeDetails").classList.toggle("show");
+    }
 
-<footer>
-  <p>© 2026 Bà Nội Kitchen</p>
-</footer>
+    function setLang(lang) {
+      document.body.setAttribute("data-current-lang", lang);
+      document.getElementById("btnEN").classList.toggle("active", lang === "en");
+      document.getElementById("btnVI").classList.toggle("active", lang === "vi");
+    }
 
-<script>
-  function toggleCoffee() {
-    document.getElementById("coffeeDetails").classList.toggle("show");
-  }
-
-  function setLang(lang) {
-    document.querySelectorAll('.en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
-    document.querySelectorAll('.vi').forEach(e => e.style.display = lang === 'vi' ? 'block' : 'none');
-
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-  }
-</script>
+    setLang("en");
+  </script>
 
 </body>
 </html>
