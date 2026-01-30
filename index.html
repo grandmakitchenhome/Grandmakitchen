@@ -21,25 +21,21 @@
       padding: 70px 20px 85px;
       text-align: center;
     }
-
     .hero-inner {
       max-width: 900px;
       margin: auto;
       animation: heroFade 0.9s ease-out both;
     }
-
     .hero img {
       max-width: 180px;
       margin-bottom: 16px;
       filter: drop-shadow(0 10px 18px rgba(0,0,0,0.15));
     }
-
     .hero h1 {
       margin: 0;
       font-size: 2.8rem;
       letter-spacing: 0.2px;
     }
-
     .hero p {
       margin-top: 10px;
       font-size: 1.15rem;
@@ -58,7 +54,7 @@
       font-size: 2rem;
     }
 
-    /* PRODUCT CARDS */
+    /* GRID + CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -68,30 +64,102 @@
     .card {
       background: #fff;
       border-radius: 18px;
-      padding: 20px;
-      text-align: center;
+      padding: 22px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       box-shadow: 0 12px 26px rgba(0,0,0,0.12);
     }
 
     .card img {
       width: 100%;
       border-radius: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      display: block;
     }
 
-    /* INFO BOX */
-    .info-box {
+    .card h3 {
+      margin: 10px 0 8px;
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #8b4b12;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .subtle {
+      opacity: 0.9;
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    /* CLICKABLE / COLLAPSIBLE DETAILS */
+    .click-hint {
+      margin-top: 10px;
+      font-size: 0.92rem;
+      opacity: 0.85;
+    }
+
+    .details {
+      display: none;
+      margin-top: 14px;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .details.show {
+      display: block;
+      animation: fadeUp 220ms ease-out both;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .details img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
       background: #fff7ea;
-      border-radius: 18px;
-      padding: 32px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      margin: 6px 6px 0 0;
+      font-size: 0.92rem;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      background: #8b4b12;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
     }
 
     /* CTA */
@@ -107,49 +175,6 @@
       margin: 0 auto;
     }
 
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .btn {
-      background: #8b4b12;
-      color: #fff;
-      padding: 14px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.18s ease, filter 0.18s ease;
-      border: none;
-      cursor: pointer;
-      min-width: 230px;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .btn.secondary {
-      background: #ffffff;
-      color: #8b4b12;
-      border: 2px solid #8b4b12;
-    }
-
-    .small {
-      font-size: 0.95rem;
-      opacity: 0.92;
-      margin-top: 10px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     /* FOOTER */
     footer {
       background: #f4f4f4;
@@ -158,13 +183,12 @@
       font-size: 0.9rem;
     }
 
-    /* SCROLL ANIMATIONS */
+    /* ANIMATIONS */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
     .reveal.show {
       opacity: 1;
       transform: translateY(0);
@@ -172,6 +196,11 @@
 
     @keyframes heroFade {
       from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -185,72 +214,115 @@
       <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
       <h1>Bà Nội Kitchen</h1>
       <p>Homemade Vietnamese Desserts • Weekly Limited Batches</p>
+      <p class="subtle">Món tráng miệng nhà làm • Mẻ nhỏ mỗi tuần</p>
     </div>
   </div>
 
-  <!-- BEST SELLERS -->
+  <!-- MENU -->
   <section class="reveal">
-    <h2>Our Best Sellers</h2>
+    <h2>Menu • Thực Đơn</h2>
+
     <div class="grid">
+
+      <!-- RAU CAU -->
       <div class="card">
-        <img src="images/raucau-original.png" alt="Rau Câu Dừa Original">
+        <img src="images/raucau-original.png" alt="Rau Câu Dừa - Original">
         <h3>Rau Câu Dừa – Original</h3>
-        <p>Lightly sweet coconut jelly made with organic ingredients.</p>
+        <p class="subtle">Thạch dừa vị truyền thống, ngọt nhẹ.</p>
+        <p class="subtle">Classic coconut jelly, lightly sweet.</p>
       </div>
 
+      <!-- RAU CAU COFFEE -->
       <div class="card">
-        <img src="images/raucau-coffee.png" alt="Rau Câu Dừa Coffee">
+        <img src="images/raucau-coffee.png" alt="Rau Câu Dừa - Coffee">
         <h3>Rau Câu Dừa – Coffee</h3>
-        <p>Rich coconut jelly layered with smooth coffee flavor.</p>
+        <p class="subtle">Thạch dừa vị cà phê, thơm và đậm.</p>
+        <p class="subtle">Coconut jelly with smooth coffee flavor.</p>
       </div>
+
+      <!-- CLICKABLE COFFEE SECRET MENU -->
+      <div class="card" role="button" tabindex="0" onclick="toggleCoffee()" onkeypress="if(event.key==='Enter'){toggleCoffee()}">
+        <div class="badge">SECRET MENU • MÓN BÍ MẬT</div>
+        <h3>☕ Cà Phê Việt Nam</h3>
+        <p class="subtle"><strong>Ongoing / Limited</strong> • Có thể thay đổi theo tuần</p>
+        <p class="subtle">Vietnamese coffee with limited weekly availability.</p>
+        <div class="click-hint">Tap to view details • Nhấn để xem chi tiết</div>
+
+        <div class="details" id="coffeeDetails">
+          <div class="details-grid">
+            <!-- Coffee Image -->
+            <img src="images/coffee.png" alt="Cà Phê Việt Nam">
+
+            <div>
+              <p style="margin:0 0 10px;">
+                <strong>VN:</strong> Cà phê Việt Nam pha đậm, thơm, cân bằng vị. Món “ongoing/secret” nên số lượng có thể giới hạn theo từng tuần.
+              </p>
+              <p style="margin:0 0 10px;">
+                <strong>EN:</strong> Vietnamese-style coffee—strong, smooth, and balanced. Ongoing/secret menu, so availability may vary each week.
+              </p>
+
+              <div>
+                <span class="pill">Classic • Truyền thống</span>
+                <span class="pill">Condensed milk • Sữa đặc</span>
+                <span class="pill">Light-sweet • Ít ngọt</span>
+              </div>
+
+              <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+                Ask about Coffee • Hỏi về Cà Phê
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- INCOMING / SECRET MENU -->
+  <!-- SECRET / INCOMING MENU SECTION -->
   <section class="reveal">
-    <h2>Incoming Menu & Secret Items 👀</h2>
-    <div class="info-box">
-      <p>
-        We regularly test <strong>new flavors and limited batches</strong> that don’t always appear on the public menu.
+    <h2>Incoming & Secret Menu 👀 • Món Mới & Món Bí Mật</h2>
+    <div class="card" style="cursor:default;">
+      <div class="badge">LIMITED • GIỚI HẠN</div>
+      <p style="margin:0 0 10px;">
+        <strong>EN:</strong> We test new flavors and limited batches that may not appear on the public menu.
       </p>
-      <p class="small">
-        DM us to ask about: ✨ incoming items • ✨ seasonal flavors • ✨ secret menu options
+      <p style="margin:0;">
+        <strong>VN:</strong> Bên mình có thử vị mới và làm mẻ giới hạn—không phải lúc nào cũng đăng công khai.
       </p>
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener" style="margin-top:16px;">
+        DM to Ask • Nhắn Tin Hỏi
+      </a>
     </div>
   </section>
 
   <!-- PARTY / CUSTOM -->
   <section class="reveal">
-    <h2>Have a Party or Special Event?</h2>
-    <div class="info-box">
-      <p>Hosting a birthday, family gathering, or celebration?</p>
-      <p class="small">🎉 Party trays • 🎉 Custom sizes & flavors • 🎉 Made-to-order desserts</p>
-      <p class="small">Contact us early so we can plan something special for you.</p>
+    <h2>Party Trays & Custom Orders 🎉 • Khay Tiệc & Làm Theo Yêu Cầu</h2>
+    <div class="card" style="cursor:default;">
+      <p style="margin:0 0 10px;">
+        <strong>EN:</strong> Have a party? Contact us for party trays and custom orders.
+      </p>
+      <p style="margin:0;">
+        <strong>VN:</strong> Có tiệc? Nhắn tin để đặt khay tiệc hoặc làm theo yêu cầu.
+      </p>
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener" style="margin-top:16px;">
+        Party / Custom • Tiệc / Theo Yêu Cầu
+      </a>
     </div>
   </section>
 
   <!-- CONTACT / CTA -->
   <section class="cta reveal">
     <div class="cta-inner">
-      <h2>Message Us</h2>
+      <h2>Message Us • Nhắn Tin Đặt</h2>
       <p><strong>Pickup area:</strong> Inland Empire (Redlands • Highland • San Bernardino)</p>
-      <p><strong>Text orders:</strong> <a href="sms:16282588225">(628) 258-8225</a></p>
+      <p><strong>Khu vực nhận hàng:</strong> Inland Empire (Redlands • Highland • San Bernardino)</p>
+      <p><strong>Text:</strong> <a href="sms:16282588225">(628) 258-8225</a></p>
       <p><strong>Instagram:</strong> <a href="https://www.instagram.com/grandmakitchenhome/" target="_blank" rel="noopener">@grandmakitchenhome</a></p>
 
-      <!-- All buttons open IG DM thread -->
-      <div class="btn-row">
-        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Place an Order</a>
-        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Ask for Secret Menu 👀</a>
-        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">Party Tray / Custom Order 🎉</a>
-      </div>
-
-      <div class="btn-row" style="margin-top:12px;">
-        <a class="btn secondary" href="https://www.instagram.com/grandmakitchenhome/" target="_blank" rel="noopener">Open Instagram Profile</a>
-      </div>
-
-      <p class="small">
-        Tip: After you DM us, we reply fast using Quick Replies (menu, pricing, pickup time).
-      </p>
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+        DM Us on Instagram • Nhắn Tin IG
+      </a>
     </div>
   </section>
 
@@ -268,6 +340,12 @@
       });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
+
+    // Toggle coffee details
+    function toggleCoffee() {
+      const el = document.getElementById("coffeeDetails");
+      el.classList.toggle("show");
+    }
   </script>
 
 </body>
