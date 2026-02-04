@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bà Nội Kitchen | Homemade Vietnamese Desserts</title>
-  <meta name="description" content="Bà Nội Kitchen – Homemade Vietnamese desserts and Vietnamese iced coffee. Inland Empire pickup." />
+  <meta name="description" content="Bà Nội Kitchen – Coconut jelly & to-go drinks. Inland Empire pickup." />
 
   <style>
-    :root {
+    :root{
       --brown:#8b4b12;
       --cream:#fff7ea;
       --cream2:#ffe6bf;
@@ -16,263 +16,351 @@
       --radius:18px;
     }
 
-    body {
+    body{
       font-family: Arial, sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #333;
-      line-height: 1.6;
+      margin:0;
+      background:#fff;
+      color:#333;
+      line-height:1.6;
     }
 
-    /* LANGUAGE: ONLY ONE AT A TIME */
-    [data-lang] { display: none; }
-    body[data-current-lang="en"] [data-lang="en"] { display: block; }
-    body[data-current-lang="vi"] [data-lang="vi"] { display: block; }
+    /* Language: ONLY one at a time */
+    [data-lang]{ display:none; }
+    body[data-current-lang="en"] [data-lang="en"]{ display:block; }
+    body[data-current-lang="vi"] [data-lang="vi"]{ display:block; }
 
-    /* TOP BAR */
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 16px;
-      background: var(--cream);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 50;
+    /* Topbar */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 16px;
+      background:var(--cream);
+      border-bottom:1px solid rgba(0,0,0,0.06);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .brand-mini{ font-weight:800; }
+    .lang-toggle button{
+      margin-left:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.15);
+      background:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .lang-toggle .active{
+      background:var(--brown);
+      color:#fff;
+      border-color:var(--brown);
     }
 
-    .brand-mini {
-      font-weight: 700;
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg, #f6b35e, #f8c77c);
+      padding:64px 20px 82px;
+      text-align:center;
+    }
+    .hero-inner{ max-width:980px; margin:0 auto; animation:heroIn 900ms ease-out both; }
+    .hero img{
+      max-width:180px;
+      margin-bottom:14px;
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,0.15));
+    }
+    .hero h1{ margin:0; font-size:2.8rem; }
+    .hero p{ margin:10px 0 0; font-size:1.12rem; opacity:0.95; }
+
+    section{
+      padding:58px 20px;
+      max-width:1050px;
+      margin:0 auto;
+    }
+    h2{
+      text-align:center;
+      margin:0 0 34px;
+      font-size:2rem;
     }
 
-    .lang-toggle button {
-      margin-left: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.15);
-      background: #fff;
-      font-weight: 700;
-      cursor: pointer;
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:26px;
+    }
+    .card{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      transition:transform 220ms ease, box-shadow 220ms ease;
+    }
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow2);
+    }
+    .card img{
+      width:100%;
+      border-radius:12px;
+      margin-bottom:12px;
+      display:block;
     }
 
-    .lang-toggle .active {
-      background: var(--brown);
-      color: #fff;
-      border-color: var(--brown);
+    .badge{
+      display:inline-block;
+      font-size:0.75rem;
+      font-weight:900;
+      letter-spacing:0.4px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--brown);
+      color:#fff;
+      margin-bottom:10px;
     }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(180deg, #f6b35e, #f8c77c);
-      padding: 65px 20px 80px;
-      text-align: center;
+    .muted{ opacity:0.88; }
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--cream);
+      margin:6px 6px 0 0;
+      font-size:0.92rem;
     }
 
-    .hero img {
-      max-width: 180px;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.15));
+    .btn{
+      display:inline-block;
+      margin-top:14px;
+      background:var(--brown);
+      color:#fff;
+      padding:12px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:900;
+      transition:transform 180ms ease, filter 180ms ease;
+    }
+    .btn:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+
+    /* CTA */
+    .cta{
+      background:var(--cream2);
+      padding:70px 20px;
+      text-align:center;
+      max-width:none;
+    }
+    .cta-inner{ max-width:950px; margin:0 auto; }
+
+    footer{
+      background:#f4f4f4;
+      text-align:center;
+      padding:24px;
+      font-size:0.9rem;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1050px;
-      margin: auto;
+    /* Reveal animation */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity 700ms ease, transform 700ms ease;
     }
+    .reveal.show{ opacity:1; transform:translateY(0); }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 32px;
-      font-size: 2rem;
-    }
-
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 26px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow2);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--brown);
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .clickable {
-      cursor: pointer;
-    }
-
-    .details {
-      display: none;
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .details.show {
-      display: block;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--cream);
-      margin: 6px 6px 0 0;
-      font-size: 0.92rem;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 16px;
-      background: var(--brown);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    .cta {
-      background: var(--cream2);
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    footer {
-      background: #f4f4f4;
-      text-align: center;
-      padding: 24px;
-      font-size: 0.9rem;
+    @keyframes heroIn{
+      from{ opacity:0; transform:translateY(-10px); }
+      to{ opacity:1; transform:translateY(0); }
     }
   </style>
 </head>
 
 <body data-current-lang="en">
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="brand-mini">Bà Nội Kitchen</div>
-  <div class="lang-toggle">
-    <button id="btnEN" class="active" onclick="setLang('en')">English</button>
-    <button id="btnVI" onclick="setLang('vi')">Tiếng Việt</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <img src="images/logo.png" alt="Bà Nội Kitchen Logo">
-  <h1 data-lang="en">Bà Nội Kitchen</h1>
-  <h1 data-lang="vi">Bếp Bà Nội</h1>
-
-  <p data-lang="en">Homemade Vietnamese Desserts & Iced Coffee</p>
-  <p data-lang="vi">Món tráng miệng & cà phê Việt Nam nhà làm</p>
-</div>
-
-<!-- BEST SELLERS -->
-<section>
-  <h2 data-lang="en">Best Sellers</h2>
-  <h2 data-lang="vi">Món Bán Chạy</h2>
-
-  <div class="grid">
-    <div class="card">
-      <img src="images/raucau-original.png">
-      <h3 data-lang="en">Coconut Jelly – Original</h3>
-      <h3 data-lang="vi">Rau Câu Dừa – Truyền Thống</h3>
-    </div>
-
-    <div class="card">
-      <img src="images/raucau-coffee.png">
-      <h3 data-lang="en">Coconut Jelly – Coffee</h3>
-      <h3 data-lang="vi">Rau Câu Dừa – Cà Phê</h3>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="brand-mini">Bà Nội Kitchen</div>
+    <div class="lang-toggle">
+      <button id="btnEN" class="active" type="button" onclick="setLang('en')">English</button>
+      <button id="btnVI" type="button" onclick="setLang('vi')">Tiếng Việt</button>
     </div>
   </div>
-</section>
 
-<!-- COFFEE -->
-<section>
-  <h2 data-lang="en">Coffee (Ongoing Menu)</h2>
-  <h2 data-lang="vi">Cà Phê (Có Thường)</h2>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <img src="images/logo.png" alt="Bà Nội Kitchen Logo" />
+      <h1 data-lang="en">Bà Nội Kitchen</h1>
+      <h1 data-lang="vi">Bếp Bà Nội</h1>
 
-  <div class="card clickable" onclick="toggleCoffee()">
-    <div class="badge" data-lang="en">ONGOING / LIMITED</div>
-    <div class="badge" data-lang="vi">CÓ THƯỜNG / GIỚI HẠN</div>
+      <p data-lang="en">Homemade Vietnamese Desserts & To-Go Drinks</p>
+      <p data-lang="vi">Món tráng miệng & nước uống mang đi</p>
+    </div>
+  </div>
 
-    <h3 data-lang="en">Vietnamese Iced Coffee (To-Go)</h3>
-    <h3 data-lang="vi">Cà Phê Việt Nam Đá (Mang Đi)</h3>
+  <!-- BEST SELLERS -->
+  <section class="reveal">
+    <h2 data-lang="en">Best Sellers</h2>
+    <h2 data-lang="vi">Món Bán Chạy</h2>
 
-    <img src="images/coffee.png" alt="Vietnamese Iced Coffee">
+    <div class="grid">
+      <div class="card">
+        <img src="images/raucau-original.png" alt="Coconut Jelly Original" />
+        <h3 data-lang="en">Coconut Jelly – Original</h3>
+        <h3 data-lang="vi">Rau Câu Dừa – Truyền Thống</h3>
+        <p class="muted" data-lang="en">Lightly sweet, refreshing coconut jelly.</p>
+        <p class="muted" data-lang="vi">Thạch dừa ngọt nhẹ, mát.</p>
+      </div>
 
-    <div class="details" id="coffeeDetails">
-      <p data-lang="en"><strong>Available styles (weekly availability):</strong></p>
-      <p data-lang="vi"><strong>Lựa chọn (tùy theo tuần):</strong></p>
+      <div class="card">
+        <img src="images/raucau-coffee.png" alt="Coconut Jelly Coffee" />
+        <h3 data-lang="en">Coconut Jelly – Coffee</h3>
+        <h3 data-lang="vi">Rau Câu Dừa – Cà Phê</h3>
+        <p class="muted" data-lang="en">Coconut jelly with smooth coffee flavor.</p>
+        <p class="muted" data-lang="vi">Thạch dừa vị cà phê thơm.</p>
+      </div>
+    </div>
+  </section>
 
-      <span class="pill">Egg Foam</span>
-      <span class="pill">Ube Foam</span>
-      <span class="pill">Classic</span>
+  <!-- DRINKS -->
+  <section class="reveal">
+    <h2 data-lang="en">Drinks</h2>
+    <h2 data-lang="vi">Nước Uống</h2>
 
-      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
-        <span data-lang="en">DM to Ask / Order</span>
-        <span data-lang="vi">Nhắn Tin Hỏi / Đặt</span>
+    <div class="grid">
+      <!-- Vietnamese Coffee (MAIN IMAGE) -->
+      <div class="card">
+        <div class="badge" data-lang="en">FEATURED</div>
+        <div class="badge" data-lang="vi">NỔI BẬT</div>
+
+        <img src="images/coffee.png" alt="Vietnamese Coffee" />
+
+        <h3 data-lang="en">Vietnamese Coffee</h3>
+        <h3 data-lang="vi">Cà Phê Việt Nam</h3>
+
+        <p class="muted" data-lang="en">To-go style iced Vietnamese coffee. Foam options may vary weekly.</p>
+        <p class="muted" data-lang="vi">Cà phê đá mang đi. Lớp foam có thể thay đổi theo tuần.</p>
+
+        <div>
+          <span class="pill">Egg Foam</span>
+          <span class="pill">Ube Foam</span>
+          <span class="pill">Classic</span>
+          <span class="pill">Matcha Foam</span>
+        </div>
+
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+          <span data-lang="en">DM to Order</span>
+          <span data-lang="vi">Nhắn Tin Đặt</span>
+        </a>
+      </div>
+
+      <!-- Taro Latte -->
+      <div class="card">
+        <img src="images/taro.png" alt="Taro Latte with Boba" />
+        <h3 data-lang="en">Taro Latte (with Boba)</h3>
+        <h3 data-lang="vi">Taro Latte (kèm trân châu)</h3>
+        <p class="muted" data-lang="en">Creamy taro latte with boba pearls.</p>
+        <p class="muted" data-lang="vi">Taro béo thơm kèm trân châu.</p>
+
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+          <span data-lang="en">DM to Order</span>
+          <span data-lang="vi">Nhắn Tin Đặt</span>
+        </a>
+      </div>
+
+      <!-- Matcha Latte -->
+      <div class="card">
+        <img src="images/matcha.png" alt="Matcha Latte with Boba" />
+        <h3 data-lang="en">Matcha Latte (with Boba)</h3>
+        <h3 data-lang="vi">Matcha Latte (kèm trân châu)</h3>
+        <p class="muted" data-lang="en">Smooth matcha latte with boba pearls.</p>
+        <p class="muted" data-lang="vi">Matcha mịn kèm trân châu.</p>
+
+        <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+          <span data-lang="en">DM to Order</span>
+          <span data-lang="vi">Nhắn Tin Đặt</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCOMING / SECRET MENU -->
+  <section class="reveal">
+    <h2 data-lang="en">Incoming & Secret Menu 👀</h2>
+    <h2 data-lang="vi">Món Sắp Có & Món Bí Mật 👀</h2>
+
+    <div class="card">
+      <p data-lang="en" style="margin:0 0 10px;">
+        We test limited batches and new items that may not appear on the public menu.
+        DM us to ask what’s available this week.
+      </p>
+      <p data-lang="vi" style="margin:0 0 10px;">
+        Bên mình có mẻ giới hạn và món mới không đăng công khai.
+        Nhắn tin hỏi món có trong tuần nhé.
+      </p>
+
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+        <span data-lang="en">DM to Ask</span>
+        <span data-lang="vi">Nhắn Tin Hỏi</span>
       </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="cta">
-  <h2 data-lang="en">Message Us</h2>
-  <h2 data-lang="vi">Liên Hệ</h2>
+  <!-- PARTY / CUSTOM -->
+  <section class="reveal">
+    <h2 data-lang="en">Party Trays & Custom Orders 🎉</h2>
+    <h2 data-lang="vi">Khay Tiệc & Làm Theo Yêu Cầu 🎉</h2>
 
-  <p>📍 Inland Empire (Redlands • Highland • San Bernardino)</p>
-  <p>📱 <a href="sms:16282588225">(628) 258-8225</a></p>
+    <div class="card">
+      <p data-lang="en" style="margin:0 0 10px;">
+        Have a party? Contact us for party trays and custom-made orders.
+      </p>
+      <p data-lang="vi" style="margin:0 0 10px;">
+        Có tiệc? Nhắn tin để đặt khay tiệc hoặc làm theo yêu cầu.
+      </p>
 
-  <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank">
-    DM on Instagram
-  </a>
-</section>
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+        <span data-lang="en">Party / Custom Inquiry</span>
+        <span data-lang="vi">Hỏi Khay Tiệc</span>
+      </a>
+    </div>
+  </section>
 
-<footer>
-  © 2026 Bà Nội Kitchen
-</footer>
+  <!-- MESSAGE US -->
+  <section class="cta reveal">
+    <div class="cta-inner">
+      <h2 data-lang="en">Message Us</h2>
+      <h2 data-lang="vi">Liên Hệ</h2>
 
-<script>
-  function toggleCoffee() {
-    document.getElementById("coffeeDetails").classList.toggle("show");
-  }
+      <p>📍 Inland Empire (Redlands • Highland • San Bernardino)</p>
+      <p>📱 <a href="sms:16282588225">(628) 258-8225</a></p>
+      <p>📷 <a href="https://www.instagram.com/grandmakitchenhome/" target="_blank" rel="noopener">@grandmakitchenhome</a></p>
 
-  function setLang(lang) {
-    document.body.setAttribute("data-current-lang", lang);
-    document.getElementById("btnEN").classList.toggle("active", lang === "en");
-    document.getElementById("btnVI").classList.toggle("active", lang === "vi");
-  }
-</script>
+      <a class="btn" href="https://ig.me/m/grandmakitchenhome" target="_blank" rel="noopener">
+        <span data-lang="en">DM on Instagram</span>
+        <span data-lang="vi">Nhắn Tin Instagram</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Bà Nội Kitchen</p>
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Language switch (only one language shows)
+    function setLang(lang){
+      document.body.setAttribute('data-current-lang', lang);
+      document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+      document.getElementById('btnVI').classList.toggle('active', lang === 'vi');
+    }
+    setLang('en');
+  </script>
 
 </body>
 </html>
